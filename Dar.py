@@ -99,17 +99,3 @@ class DynArray:
                         self.array[x+1] = None
                         break
                     self.array[x] = self.array[x+1]
-
-
-da = DynArray()
-da.insert(0,125453)
-for i in range(10):
-    da.append(i)
-da.insert(1,125453)
-da.insert(11,125453)
-da.insert(5,125453)
-da.insert(12,125453)
-da.delete(0)
-da.delete(0)
-for i in range(10):
-    print(da[i])

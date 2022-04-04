@@ -49,7 +49,7 @@ class DynArray:
                 self.count += 1
                 break
             elif j == i and i < self.count and self.count + 1 > self.capacity:
-                new_capacity = self.capacity + 1
+                new_capacity = self.capacity * 2
                 new_array = self.make_array(new_capacity)
                 for x in range(self.count):
                     new_array[x] = self.array[x]
@@ -65,7 +65,7 @@ class DynArray:
                 self.count += 1
                 break
             elif j == i and i == self.count and self.count + 1 > self.capacity:
-                new_capacity = self.capacity + 1
+                new_capacity = self.capacity * 2
                 new_array = self.make_array(new_capacity)
                 for x in range(self.count):
                     new_array[x] = self.array[x]
@@ -79,7 +79,7 @@ class DynArray:
                 self.count += 1
                 break
             elif i == self.count and self.count + 1 > self.capacity:
-                new_capacity = self.capacity + 1
+                new_capacity = self.capacity * 2
                 new_array = self.make_array(new_capacity)
                 for x in range(self.count):
                     new_array[x] = self.array[x]
@@ -89,6 +89,7 @@ class DynArray:
                 self.capacity = new_capacity
                 break
     def delete(self, i):
+        
         if i < 0 or i >= self.count:
             raise IndexError('Index is out of bounds')
         for j in range(self.count):
@@ -99,3 +100,12 @@ class DynArray:
                         self.array[x+1] = None
                         break
                     self.array[x] = self.array[x+1]
+                    
+da = DynArray()
+for i in range(15):
+    da.append(i)
+for i in range(15):
+    print(da[i])
+da.insert(15,125453)
+for i in range(16):
+    print(da[i])

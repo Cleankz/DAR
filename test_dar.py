@@ -19,7 +19,9 @@ class MyTests(unittest.TestCase):
         da = DynArray()
         for i in range(random.randint(0,500)):
             da.append(i)
-        for j in range(random.randint(0,500)):
+        for j in range(random.randint(0,i)):
+            self.assertLess(j,i)
+            self.assertGreater(j,0)
             da.delete(j)
 
 if __name__ == '__main__':

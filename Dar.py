@@ -2,7 +2,7 @@ from asyncio.windows_events import NULL
 import ctypes
 
 class DynArray:
-    
+
     def __init__(self):
         self.count = 0
         self.capacity = 16
@@ -20,7 +20,6 @@ class DynArray:
         if i < 0 or i >= self.count:
             raise IndexError('Index is out of bounds')
         return self.array[i]
-        
 
     def resize(self, new_capacity):
         new_array = self.make_array(new_capacity)
@@ -88,10 +87,15 @@ class DynArray:
                 self.count += 1
                 self.capacity = new_capacity
                 break
+
     def delete(self, i):
         if i < 0 or i >= self.count:
             raise IndexError('Index is out of bounds')
         for j in range(self.count):
+            if i == self.count - 1:
+                self.array[i] = None
+                self.count -=1
+                break
             if j == i:
                 for x in range(i,self.count):
                     if x+1 == self.count-1:
@@ -99,7 +103,8 @@ class DynArray:
                         self.array[x+1] = None
                         break
                     self.array[x] = self.array[x+1]
-        if self.count < self.count // 2:
+                self.count -=1
+        if self.count < self.capacity // 2:
             new_capacity = self.capacity // 1.5
             if new_capacity < 16:
                 new_capacity = 16

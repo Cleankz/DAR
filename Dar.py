@@ -89,7 +89,6 @@ class DynArray:
                 self.capacity = new_capacity
                 break
     def delete(self, i):
-        
         if i < 0 or i >= self.count:
             raise IndexError('Index is out of bounds')
         for j in range(self.count):
@@ -100,6 +99,11 @@ class DynArray:
                         self.array[x+1] = None
                         break
                     self.array[x] = self.array[x+1]
+        if self.count < self.count // 2:
+            new_capacity = self.capacity // 1.5
+            if new_capacity < 16:
+                new_capacity = 16
+            self.resize(new_capacity)
                     
 da = DynArray()
 for i in range(15):
@@ -107,5 +111,7 @@ for i in range(15):
 for i in range(15):
     print(da[i])
 da.insert(15,125453)
-for i in range(16):
+da.insert(16,1254)
+da.delete(14)
+for i in range(17):
     print(da[i])

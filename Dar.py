@@ -104,14 +104,3 @@ class DynArray:
             if new_capacity < 16:
                 new_capacity = 16
             self.resize(new_capacity)
-                    
-da = DynArray()
-for i in range(15):
-    da.append(i)
-for i in range(15):
-    print(da[i])
-da.insert(15,125453)
-da.insert(16,1254)
-da.delete(14)
-for i in range(17):
-    print(da[i])

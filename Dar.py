@@ -1,5 +1,6 @@
 from asyncio.windows_events import NULL
 import ctypes
+import random
 
 class DynArray:
 
@@ -100,7 +101,7 @@ class DynArray:
                 for x in range(i,self.count):
                     if x+1 == self.count-1:
                         self.array[x] = self.array[x+1]
-                        self.array[x+1] = None
+                        self.array[x+1] = NULL
                         break
                     self.array[x] = self.array[x+1]
                 self.count -=1
@@ -108,4 +109,4 @@ class DynArray:
             new_capacity = self.capacity // 1.5
             if new_capacity < 16:
                 new_capacity = 16
-            self.resize(new_capacity)
+            self.resize(int(new_capacity))

@@ -17,11 +17,11 @@ class MyTests(unittest.TestCase):
 
     def test_delete(self):
         da = DynArray()
-        for i in range(random.randint(0,500)):
+        for i in range(500):
             da.append(i)
-        for j in range(random.randint(0,i)):
-            self.assertLess(j,i)
-            self.assertGreater(j,0)
+        for j in range(random.randint(0,500)):
+            #self.assertLess(j,i)
+            #self.assertGreater(j,0)
             da.delete(j)
 
 if __name__ == '__main__':

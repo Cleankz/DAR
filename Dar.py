@@ -101,12 +101,20 @@ class DynArray:
                 for x in range(i,self.count):
                     if x+1 == self.count-1:
                         self.array[x] = self.array[x+1]
-                        self.array[x+1] = NULL
+                        self.array[x+1] = None
                         break
                     self.array[x] = self.array[x+1]
                 self.count -=1
+                break
         if self.count < self.capacity // 2:
             new_capacity = self.capacity // 1.5
             if new_capacity < 16:
                 new_capacity = 16
             self.resize(int(new_capacity))
+
+da = DynArray()
+for i in range(2):
+    da.append(i)
+for j in range(64):
+    print(da[j])
+    da.delete(j)

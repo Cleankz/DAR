@@ -13,13 +13,13 @@ class MyTests(unittest.TestCase):
         self.assertEqual(16,da.capacity)
         for j in range(20):
             da.insert(random.randint(0,15),random.randint(0,15))
-        self.assertNotEqual(16,da.capacity)
+        self.assertEqual(64,da.capacity)
 
     def test_delete(self):
         da = DynArray()
-        for i in range(500):
+        for i in range(100):
             da.append(i)
-        for j in range(random.randint(0,500)):
+        for j in range(random.randint(0,100)):
             #self.assertLess(j,i)
             #self.assertGreater(j,0)
             da.delete(j)
